@@ -65,4 +65,24 @@ class Team extends Model
     {
         return $this->belongsToMany(BfoInfo::class, 'team_member_table', 'team_id', 'member_mnv');
     }
+
+    /**
+     * Một team có thể thuộc một team chính
+     *
+     * @return void
+     */
+    public function main_team()
+    {
+        return $this->belongsTo(Team::class, 'main_team_id', 'id');
+    }
+
+    /**
+     * Một team có thể có nhiều team nhỏ khác
+     *
+     * @return void
+     */
+    public function sub_teams()
+    {
+        return $this->hasMany(Team::class, 'main_team_id', 'id');
+    }
 }
