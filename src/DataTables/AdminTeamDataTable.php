@@ -21,7 +21,14 @@ class AdminTeamDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'team.action');
+            ->addColumn('action', 'team.action')
+            ->editColumn('active', function ($query) {
+                if (!!$query->active) {
+                    return "Đã kích hoạt";
+                } else {
+                    return "Đã vô hiệu hóa";
+                }
+            });
     }
 
     /**
@@ -75,14 +82,82 @@ class AdminTeamDataTable extends DataTable
     {
         return [
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+                    ->exportable(false)
+                    ->printable(false)
+                    ->width(60)
+                    ->addClass('text-center')
+                    ->title("")
+                    ->footer(""),
+            Column::make('name')
+                    ->title("Tên Nhóm")
+                    ->width(150)
+                    ->searchable(true)
+                    ->orderable(true)
+                    ->footer("Tên Nhóm"),
+            Column::make('team_type.name')
+                    ->title("Phân loại")
+                    ->width(25)
+                    ->searchable(false)
+                    ->orderable(false)
+                    ->render("function() {
+                          if (!!data) {
+                              return data;
+                          } else {
+                              return null;
+                          }
+                      }")
+                    ->footer("Phân loại"),
+            Column::make('team_leaders')
+                    ->title("Quản lý")
+                    ->width(25)
+                    ->searchable(false)
+                    ->orderable(false)
+                    ->render("function() {
+                          if (!!data) {
+                              return data;
+                          } else {
+                              return null;
+                          }
+                      }")
+                    ->footer("Quản lý"),
+            Column::make('main_team.name')
+                    ->title("Trực thuộc")
+                    ->width(25)
+                    ->searchable(false)
+                    ->orderable(false)
+                    ->render("function() {
+                          if (!!data) {
+                              return data;
+                          } else {
+                              return null;
+                          }
+                      }")
+                    ->footer("Trực thuộc"),
+            Column::make('nhom_kd.name')
+                    ->title("Nhóm SP")
+                    ->width(25)
+                    ->searchable(false)
+                    ->orderable(false)
+                    ->render("function() {
+                          if (!!data) {
+                              return data;
+                          } else {
+                              return null;
+                          }
+                      }")
+                    ->footer("Nhóm SP"),
+            Column::make('active')
+                    ->title("Trạng thái")
+                    ->searchable(false)
+                    ->orderable(false)
+                    ->render("function() {
+                          if (!!data) {
+                              return data;
+                          } else {
+                              return null;
+                          }
+                      }")
+                    ->footer("Trạng thái"),
         ];
     }
 
