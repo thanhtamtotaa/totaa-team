@@ -39,7 +39,13 @@ class AdminTeamDataTable extends DataTable
      */
     public function query(Team $model)
     {
-        return $model->newQuery();
+        $query = $model->newQuery();
+
+        if (!request()->has('order')) {
+            $query->orderBy('order', 'desc')->orderBy('id', 'asc');
+        };
+
+        return $query;
     }
 
     /**
