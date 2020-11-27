@@ -53,7 +53,7 @@ class Team extends Model
      */
     public function team_leaders()
     {
-        return $this->belongsToMany(BfoInfo::class, 'team_leader_table', 'team_id', 'leader_mnv');
+        return $this->belongsToMany(BfoInfo::class, 'team_leaders_table', 'team_id', 'leader_mnv');
     }
 
     /**
@@ -63,7 +63,7 @@ class Team extends Model
      */
     public function team_members()
     {
-        return $this->belongsToMany(BfoInfo::class, 'team_member_table', 'team_id', 'member_mnv');
+        return $this->belongsToMany(BfoInfo::class, 'team_members_table', 'team_id', 'member_mnv');
     }
 
     /**
