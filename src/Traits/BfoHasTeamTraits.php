@@ -26,9 +26,9 @@ trait BfoHasTeamTraits
         return $this->belongsToMany(Team::class, 'team_leaders_table', 'member_mnv', 'team_id');
     }
 
-    public function is_leader_of_team()
+    public function is_leader_of_team(Team $team = NULL)
     {
-        dd($this);
+        dd(optional(optional($team)->team_leaders)->contains($this));
     }
 
 }
