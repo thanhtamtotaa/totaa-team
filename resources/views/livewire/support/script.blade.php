@@ -56,28 +56,7 @@
                             minimumResultsForSearch: $(this).attr("totaa-search"),
                             dropdownParent: $("#" + $(this).attr("id") + "_div"),
                         })
-                        .change(function(e) {
-                            @this.set($(this).attr("wire:model"), $(this).val());
-                        });
-                });
-            }
-
-            if ($("input.datetimepicker-totaa").length != 0) {
-                $("input.datetimepicker-totaa").each(function(e) {
-                    $(this)
-                        .datetimepicker({
-                            format: "dd-mm-yyyy hh:ii",
-                            autoclose: true,
-                            todayBtn: true,
-                            minuteStep: 15,
-                            todayHighlight: true,
-                            bootcssVer: 4,
-                            zIndex: 3050,
-                            language: "vi",
-                            pickerPosition: "top-left",
-                            weekStart: 1,
-                        })
-                        .change(function(e) {
+                        .on('select2:close', function (e) {
                             @this.set($(this).attr("wire:model"), $(this).val());
                         });
                 });
