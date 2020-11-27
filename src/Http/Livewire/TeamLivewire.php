@@ -13,7 +13,7 @@ class TeamLivewire extends Component
      *
      * @var mixed
      */
-    public $team_id, $name, $team_type_id, $main_team_id, $nhom_kd_id, $order, $active, $created_by;
+    public $team_id, $name, $team_type_id, $main_team_id, $nhom_kd_id, $order, $active, $created_by, $quanlys;
     public $bfo_info, $modal_title, $team_type_arrays;
 
     /**
