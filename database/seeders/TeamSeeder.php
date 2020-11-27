@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Totaa\TotaaTeam\Models\TeamType;
 use Totaa\TotaaTeam\Models\NhomKD;
 
-class NhomKDSeeder extends Seeder
+class TeamSeeder extends Seeder
 {
     /**
      * Run the database seeds.
