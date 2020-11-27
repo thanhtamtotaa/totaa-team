@@ -46,6 +46,24 @@
                                 </div>
                             </div>
 
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="col-form-label" for="quanlys">Quản lý:</label>
+                                    <div class="select2-success" id="quanlys_div">
+                                        <select class="form-control px-2 select2-totaa" multiple totaa-placeholder="Quản lý ..." totaa-search="10" wire:model="quanlys" id="quanlys" style="width: 100%">
+                                            @if (!!count($team_type_arrays))
+                                                @foreach ($team_type_arrays as $team_type_array)
+                                                    <option value="{{ $team_type_array->id }}">{{ $team_type_array->name }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                    @error('quanlys')
+                                        <label class="pl-1 small invalid-feedback d-inline-block" ><i class="fas mr-1 fa-exclamation-circle"></i>{{ $message }}</label>
+                                    @enderror
+                                </div>
+                            </div>
+
                         </div>
                     </form>
                 </div>
