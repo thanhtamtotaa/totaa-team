@@ -3,6 +3,8 @@
 namespace Totaa\TotaaTeam;
 
 use Illuminate\Support\ServiceProvider;
+use Totaa\TotaaTeam\Http\Livewire\TeamLivewire;
+use Livewire\Livewire;
 
 class TotaaTeamServiceProvider extends ServiceProvider
 {
@@ -63,5 +65,9 @@ class TotaaTeamServiceProvider extends ServiceProvider
         $this->app->singleton('totaa-team', function () {
             return new TotaaTeam;
         });
+
+        if (class_exists(Livewire::class)) {
+            Livewire::component('totaa-team::team-livewire', TeamLivewire::class);
+        }
     }
 }
