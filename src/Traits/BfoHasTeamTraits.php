@@ -28,7 +28,7 @@ trait BfoHasTeamTraits
 
     public function is_leader_of_team(Team $team = NULL)
     {
-        dd(optional(optional($team)->team_leaders)->contains($this));
+        return !!optional(optional($team)->team_leaders)->contains($this);
     }
 
 }
