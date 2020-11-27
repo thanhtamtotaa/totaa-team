@@ -4,7 +4,7 @@ namespace Totaa\TotaaTeam\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use Totaa\TotaaPermission\DataTables\AdminTeamDataTable;
+use Totaa\TotaaTeam\DataTables\AdminTeamDataTable;
 
 class TeamController extends Controller
 {
@@ -16,7 +16,7 @@ class TeamController extends Controller
     public function index(AdminTeamDataTable $dataTable)
     {
         if (Auth::user()->bfo_info->hasAnyPermission(["view-team"])) {
-            return $dataTable->render('totaa-permission::team', ['title' => 'Quản lý Nhóm']);
+            return $dataTable->render('totaa-team::team', ['title' => 'Quản lý Nhóm']);
         } else {
             return view('errors.dynamic', [
                 'error_code' => '403',
