@@ -16,7 +16,7 @@ class TeamType extends Model
     use Userstamps;
 
     // Disable Laravel's mass assignment protection
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
     /**
      * The table associated with the model.
