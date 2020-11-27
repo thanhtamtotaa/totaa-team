@@ -1,0 +1,55 @@
+{
+    "name": "totaa/totaa-team",
+    "description": "Laravel Team package by Totaa",
+    "keywords": [
+        "totaa",
+        "totaa-team"
+    ],
+    "homepage": "https://github.com/thanhtamtotaa/totaa-team",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Tho Thanh Tâm",
+            "email": "thanhtamtotaa@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0",
+        "illuminate/console": "^6.0|^7.0|^8.0",
+        "illuminate/contracts": "^6.0|^7.0|^8.0",
+        "illuminate/support": "^6.0|^7.0|^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Totaa\\TotaaTeam\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Totaa\\TotaaTeam\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Totaa\\TotaaTeam\\TotaaTeamServiceProvider"
+            ],
+            "aliases": {
+                "TotaaTeam": "Totaa\\TotaaTeam\\TotaaTeamFacade"
+            }
+        }
+    }
+}
