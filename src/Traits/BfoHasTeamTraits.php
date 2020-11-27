@@ -26,9 +26,26 @@ trait BfoHasTeamTraits
         return $this->belongsToMany(Team::class, 'team_leaders_table', 'member_mnv', 'team_id');
     }
 
+    /**
+     * Kiểm tra xem có phải là quản lý của một team nào đó
+     *
+     * @param  mixed $team
+     * @return void
+     */
     public function is_leader_of_team(Team $team = NULL)
     {
         return !!optional(optional($team)->team_leaders)->contains($this);
+    }
+
+    /**
+     * Kiểm tra xem có phải là thành viên của một team nào đó
+     *
+     * @param  mixed $team
+     * @return void
+     */
+    public function is_member_of_team(Team $team = NULL)
+    {
+        return !!optional(optional($team)->team_members)->contains($this);
     }
 
 }
