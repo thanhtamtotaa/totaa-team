@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Wildside\Userstamps\Userstamps;
 use Totaa\TotaaTeam\Models\TeamType;
 use Totaa\TotaaTeam\Models\NhomKD;
+use Totaa\TotaaBfo\Models\BfoInfo;
 
 class Team extends Model
 {
@@ -43,5 +44,25 @@ class Team extends Model
     public function nhom_kd()
     {
         return $this->belongsTo(NhomKD::class, 'nhom_kd_id', 'id');
+    }
+
+    /**
+     * Một team có thể có nhiều người quản lý
+     *
+     * @return void
+     */
+    public function team_leaders()
+    {
+        return $this->belongsToMany(BfoInfo::class, 'team_leader_table', 'team_id', 'leader_mnv');
+    }
+
+    /**
+     * Môt team có nhiều thanh viên
+     *
+     * @return void
+     */
+    public function team_members()
+    {
+        return $this->belongsToMany(BfoInfo::class, 'team_member_table', 'team_id', 'member_mnv');
     }
 }
