@@ -43,18 +43,27 @@ class AdminTeamDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('team-table')
+                    ->setTableId('permission-table')
                     ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->buttons(
-                        Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+                    ->dom("<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'row'<'col-sm-12 table-responsive't>><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>")
+                    ->parameters([
+                        "autoWidth" => false,
+                        "lengthMenu" => [
+                            [10, 25, 50, -1],
+                            [10, 25, 50, "Tất cả"]
+                        ],
+                        "order" => [],
+                        'initComplete' => 'function(settings, json) {
+                            var api = this.api();
+                            window.addEventListener("dt_draw", function(e) {
+                                api.draw(false);
+                                e.preventDefault();
+                            })
+                            api.buttons()
+                                .container()
+                                .appendTo($("#datatable-button"));
+                        }',
+                    ]);
     }
 
     /**
