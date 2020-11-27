@@ -57,8 +57,8 @@ class Team_Role_Permission_Seeder extends Seeder
             $admin_team = Role::where("name", "admin-team")->first();
         }
 
-        $super_admin->syncPermissions($permission);
-        $admin->syncPermissions($permission);
-        $admin_team->syncPermissions($permission);
+        $super_admin->givePermissionTo($permission);
+        $admin->givePermissionTo($permission);
+        $admin_team->givePermissionTo($permission);
     }
 }
