@@ -5,6 +5,7 @@ namespace Totaa\TotaaTeam\Http\Livewire;
 use Livewire\Component;
 use Auth;
 use Totaa\TotaaTeam\Models\TeamType;
+use Totaa\TotaaBfo\Models\BfoInfo;
 
 class TeamLivewire extends Component
 {
@@ -14,7 +15,7 @@ class TeamLivewire extends Component
      * @var mixed
      */
     public $team_id, $name, $team_type_id, $main_team_id, $nhom_kd_id, $order, $active, $created_by, $quanlys;
-    public $bfo_info, $modal_title, $team_type_arrays;
+    public $bfo_info, $modal_title, $team_type_arrays, $bfo_info_arrays;
 
     /**
      * Cho phép cập nhật updateMode
@@ -63,6 +64,7 @@ class TeamLivewire extends Component
         $this->bfo_info = Auth::user()->bfo_info;
         $this->created_by = $this->bfo_info->mnv;
         $this->team_type_arrays = TeamType::where("active", true)->get();
+        $this->bfo_info_arrays = BfoInfo::where("active", true)->get();
     }
 
     /**
