@@ -49,7 +49,11 @@
 
             if ($("select.select2-totaa").length != 0) {
                 $("select.select2-totaa").each(function(e) {
-                    $(this)
+                    if ($(this).hasClass("select2-hidden-accessible")) {
+                        $(this).trigger('change');
+                        console.log(12212);
+                    } else {
+                        $(this)
                         .wrap('<div class="position-relative"></div>')
                         .select2({
                             placeholder: $(this).attr("totaa-placeholder"),
@@ -57,8 +61,10 @@
                             dropdownParent: $("#" + $(this).attr("id") + "_div"),
                         })
                         .on('select2:close', function (e) {
+                            console.log($(this).val());
                             @this.set($(this).attr("wire:model"), $(this).val());
                         });
+                    }
                 });
             }
         });
