@@ -27,6 +27,8 @@
                                 </div>
                             </div>
 
+                            <pre>{{ var_dump($quanlys) }}</pre>
+
                             <div class="col-12">
                                 <div class="form-group">
                                     <label class="col-form-label" for="team_type_id">Phân loại nhóm:</label>
@@ -51,9 +53,9 @@
                                     <label class="col-form-label" for="quanlys">Quản lý:</label>
                                     <div class="select2-success" id="quanlys_div">
                                         <select class="form-control px-2 select2-totaa" multiple totaa-placeholder="Quản lý ..." totaa-search="10" wire:model="quanlys" id="quanlys" style="width: 100%">
-                                            @if (!!count($team_type_arrays))
-                                                @foreach ($team_type_arrays as $team_type_array)
-                                                    <option value="{{ $team_type_array->id }}">{{ $team_type_array->name }}</option>
+                                            @if (!!count($bfo_info_arrays))
+                                                @foreach ($bfo_info_arrays as $bfo_info_array)
+                                                    <option value="{{ $bfo_info_array->mnv }}">[{{ $bfo_info_array->mnv }}] {{ $bfo_info_array->full_name }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
