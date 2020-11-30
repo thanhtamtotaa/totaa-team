@@ -35,7 +35,7 @@
                                     <div id="team_type_id_div">
                                         <select class="form-control px-2 select2-totaa" totaa-placeholder="Phân loại nhóm ..." totaa-search="10" wire:model="team_type_id" id="team_type_id" style="width: 100%">
                                             <option selected></option>
-                                            @if (!!count($team_type_arrays))
+                                            @if (!!$team_type_arrays->count())
                                                 @foreach ($team_type_arrays as $team_type_array)
                                                     <option value="{{ $team_type_array->id }}">{{ $team_type_array->name }}</option>
                                                 @endforeach
@@ -53,7 +53,7 @@
                                     <label class="col-form-label" for="quanlys">Quản lý:</label>
                                     <div class="select2-success" id="quanlys_div">
                                         <select class="form-control px-2 select2-totaa" multiple totaa-placeholder="Quản lý ..." totaa-search="10" wire:model="quanlys" id="quanlys" style="width: 100%">
-                                            @if (!!count($bfo_info_arrays))
+                                            @if (!!$bfo_info_arrays->count())
                                                 @foreach ($bfo_info_arrays as $bfo_info_array)
                                                     <option value="{{ $bfo_info_array->mnv }}">[{{ $bfo_info_array->mnv }}] {{ $bfo_info_array->full_name }}</option>
                                                 @endforeach
