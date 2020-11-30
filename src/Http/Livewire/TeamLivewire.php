@@ -49,7 +49,7 @@ class TeamLivewire extends Component
             'kenh_kd_id' => 'nullable|exists:kenh_kinhdoanhs,id',
             'nhom_kd_id' => 'nullable|exists:nhom_kinhdoanhs,id',
             'order' => 'nullable|numeric',
-            'active' => 'nullable|numeric',
+            'active' => 'nullable|boolean',
             'created_by' => 'required|exists:bfo_infos,mnv',
             'quanlys' => 'nullable|array',
             'quanlys.*' => 'nullable|exists:bfo_infos,mnv',
@@ -79,7 +79,7 @@ class TeamLivewire extends Component
         $this->created_by = $this->bfo_info->mnv;
         $this->team_type_arrays = TeamType::where("active", true)->get();
         $this->team_arrays = Team::where("active", true)->where("id", "<>", $this->team_id)->get();
-        $this->bfo_info_arrays = BfoInfo::where("active", true)->get();
+        $this->bfo_info_arrays = BfoInfo::where("active", true)->select("mnv", "full_name")->get()->toArray();
 
         if (!!$this->team_type_id) {
             $this->kenh_kd_arrays = optional(TeamType::find($this->team_type_id))->kenh_kds;
