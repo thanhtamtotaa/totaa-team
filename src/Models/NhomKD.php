@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Wildside\Userstamps\Userstamps;
 use Totaa\TotaaTeam\Models\TeamType;
 use Totaa\TotaaTeam\Models\Team;
+use Totaa\TotaaTeam\Models\KenhKD;
 
 class NhomKD extends Model
 {
@@ -43,5 +44,15 @@ class NhomKD extends Model
     public function team_type()
     {
         return $this->belongsTo(TeamType::class, 'team_type_id', 'id');
+    }
+
+    /**
+     * Mỗi nhóm kinh doanh có thể thuộc một kênh kinh doanh
+     *
+     * @return void
+     */
+    public function kenh_kd()
+    {
+        return $this->belongsTo(KenhKD::class, 'kenh_kd_id', 'id');
     }
 }
