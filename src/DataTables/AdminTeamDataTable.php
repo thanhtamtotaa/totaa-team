@@ -8,6 +8,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Auth;
 
 class AdminTeamDataTable extends DataTable
 {
@@ -21,13 +22,30 @@ class AdminTeamDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'team.action')
+            ->addColumn('action', function ($query) {
+                $Action_Icon="<div class='action-div icon-4 px-0 mx-1 d-flex justify-content-around text-center'>";
+
+                if (Auth::user()->bfo_info->can("edit-team")) {
+                    $Action_Icon.="<div class='col action-icon-w-50 action-icon' totaa-edit-team='$query->id'><i class='text-indigo fas fa-edit'></i></div>";
+                }
+
+                if (Auth::user()->bfo_info->can("edit-team")) {
+                    $Action_Icon.="<div class='col action-icon-w-50 action-icon' totaa-set-team-member='$query->id'><i class='text-danger fas fa-trash-alt'></i></div>";
+                }
+
+                $Action_Icon.="</div>";
+
+                return $Action_Icon;
+            })
             ->editColumn('active', function ($query) {
                 if (!!$query->active) {
                     return "Đã kích hoạt";
                 } else {
                     return "Đã vô hiệu hóa";
                 }
+            })
+            ->editColumn('team_leaders', function ($query) {
+                return implode(", ", $query->team_leaders->pluck("full_name")->toArray());
             });
     }
 
@@ -45,7 +63,7 @@ class AdminTeamDataTable extends DataTable
             $query->orderBy('order', 'desc')->orderBy('id', 'asc');
         };
 
-        return $query;
+        return $query->with(["main_team:*", "team_leaders:*", "nhom_kd:*", "kenh_kd:*", "team_type:*"]);
     }
 
     /**
@@ -56,7 +74,7 @@ class AdminTeamDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('permission-table')
+                    ->setTableId('team-table')
                     ->columns($this->getColumns())
                     ->dom("<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'row'<'col-sm-12 table-responsive't>><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>")
                     ->parameters([
@@ -113,6 +131,19 @@ class AdminTeamDataTable extends DataTable
                           }
                       }")
                     ->footer("Phân loại"),
+            Column::make('kenh_kd.name')
+                    ->title("Kênh")
+                    ->width(25)
+                    ->searchable(false)
+                    ->orderable(false)
+                    ->render("function() {
+                          if (!!data) {
+                              return data;
+                          } else {
+                              return null;
+                          }
+                      }")
+                    ->footer("Kênh"),
             Column::make('team_leaders')
                     ->title("Quản lý")
                     ->width(25)
