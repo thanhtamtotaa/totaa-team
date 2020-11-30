@@ -64,7 +64,6 @@ class TeamSeeder extends Seeder
             [
                 'name' => "Mắt",
                 'team_type_id' => '3',
-                'kenh_kd_id' => 1,
                 'order' => 1,
                 'active' => true,
             ]
@@ -75,7 +74,6 @@ class TeamSeeder extends Seeder
             [
                 'name' => "Hô hấp",
                 'team_type_id' => '3',
-                'kenh_kd_id' => 1,
                 'order' => 2,
                 'active' => true,
             ]
@@ -86,7 +84,6 @@ class TeamSeeder extends Seeder
             [
                 'name' => "DT Plus",
                 'team_type_id' => '3',
-                'kenh_kd_id' => 1,
                 'order' => 3,
                 'active' => true,
             ]
@@ -97,7 +94,6 @@ class TeamSeeder extends Seeder
             [
                 'name' => "Thần kinh",
                 'team_type_id' => '3',
-                'kenh_kd_id' => 1,
                 'order' => 4,
                 'active' => true,
             ]
@@ -108,7 +104,6 @@ class TeamSeeder extends Seeder
             [
                 'name' => "Cơ xương khớp",
                 'team_type_id' => '3',
-                'kenh_kd_id' => 1,
                 'order' => 5,
                 'active' => true,
             ]
@@ -119,7 +114,6 @@ class TeamSeeder extends Seeder
             [
                 'name' => "Hỗn hợp",
                 'team_type_id' => '3',
-                'kenh_kd_id' => 1,
                 'order' => 99,
                 'active' => true,
             ]
