@@ -37,16 +37,6 @@ class NhomKD extends Model
     }
 
     /**
-     * Mỗi nhóm kinh doanh có thể thuộc một phận loại nhóm nào đó
-     *
-     * @return void
-     */
-    public function team_type()
-    {
-        return $this->belongsTo(TeamType::class, 'team_type_id', 'id');
-    }
-
-    /**
      * Mỗi nhóm kinh doanh có thể thuộc một kênh kinh doanh
      *
      * @return void
