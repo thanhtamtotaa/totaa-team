@@ -163,6 +163,8 @@ class TeamLivewire extends Component
             return null;
         }
 
+        $this->validate();
+
         try {
             $Team = Team::updateOrCreate([
                 "id" => $this->team_id,
@@ -260,6 +262,8 @@ class TeamLivewire extends Component
             $this->dispatchBrowserEvent('toastr', ['type' => 'warning', 'title' => "Thất bại", 'message' => "Bạn không có quyền thực hiện hành động này"]);
             return null;
         }
+
+        $this->validate();
 
         try {
             $this->team->team_members()->sync($this->members);
