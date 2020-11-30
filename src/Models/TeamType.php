@@ -36,7 +36,18 @@ class TeamType extends Model
     }
 
     /**
-     * Mỗi kênh kinh doanh có nhiều nhóm kinh doanh
+     * Mỗi loại nhóm có nhiều kênh kinh doanh
+     * nhom_kds
+     *
+     * @return void
+     */
+    public function kenh_kds()
+    {
+        return $this->hasMany(NhomKD::class, 'kenh_kd_id', 'id');
+    }
+
+    /**
+     * Mỗi loại nhóm có nhiều nhóm kinh doanh
      * nhom_kds
      *
      * @return void
