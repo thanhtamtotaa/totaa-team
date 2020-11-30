@@ -4,7 +4,10 @@ namespace Totaa\TotaaTeam\Http\Livewire;
 
 use Livewire\Component;
 use Auth;
+use Totaa\TotaaTeam\Models\Team;
 use Totaa\TotaaTeam\Models\TeamType;
+use Totaa\TotaaTeam\Models\KenhKD;
+use Totaa\TotaaTeam\Models\NhomKD;
 use Totaa\TotaaBfo\Models\BfoInfo;
 
 class TeamLivewire extends Component
@@ -14,8 +17,8 @@ class TeamLivewire extends Component
      *
      * @var mixed
      */
-    public $team_id, $name, $team_type_id, $main_team_id, $nhom_kd_id, $order, $active, $created_by, $quanlys;
-    public $bfo_info, $modal_title, $team_type_arrays, $bfo_info_arrays;
+    public $team_id, $name, $team_type_id, $main_team_id, $kenh_kd_id, $nhom_kd_id, $order, $active, $created_by, $quanlys;
+    public $bfo_info, $modal_title, $team_type_arrays, $bfo_info_arrays, $kenh_kd_arrays, $nhom_kd_arrays;
 
     /**
      * Cho phép cập nhật updateMode
@@ -65,6 +68,18 @@ class TeamLivewire extends Component
         $this->created_by = $this->bfo_info->mnv;
         $this->team_type_arrays = TeamType::where("active", true)->get();
         $this->bfo_info_arrays = BfoInfo::where("active", true)->get();
+
+        if (!!$this->team_type_id) {
+            $this->kenh_kd_arrays = TeamType::find($this->team_type_id)->kenh_kds;
+        } else {
+            $this->kenh_kd_arrays = NULL;
+        }
+
+        if (!!$this->kenh_kd_id) {
+            $this->nhom_kd_arrays = KenhKD::find($this->kenh_kd_id)->kenh_kd;
+        } else {
+            $this->nhom_kd_arrays = NULL;
+        }
     }
 
     /**
