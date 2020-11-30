@@ -53,6 +53,6 @@ class KenhKD extends Model
      */
     public function nhom_kds()
     {
-        return $this->hasMany(NhomKD::class, 'team_type_id', 'id');
+        return $this->hasMany(NhomKD::class, 'kenh_kd_id', 'id');
     }
 }
