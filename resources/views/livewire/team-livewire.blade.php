@@ -4,7 +4,7 @@
 
     <!-- Incluce các modal -->
     @include('totaa-team::livewire.modal.add_edit_modal')
-    @include('totaa-team::livewire.modal.delete_modal')
+    @include('totaa-team::livewire.modal.set_team_member_modal')
 
     <!-- Scripts -->
     @push('livewires')
