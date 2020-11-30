@@ -5,6 +5,7 @@ namespace Totaa\TotaaTeam\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Totaa\TotaaTeam\Models\TeamType;
 use Totaa\TotaaTeam\Models\NhomKD;
+use Totaa\TotaaTeam\Models\KenhKD;
 
 class TeamSeeder extends Seeder
 {
@@ -17,27 +18,40 @@ class TeamSeeder extends Seeder
     {
         TeamType::updateOrCreate(
             ['id' => 1],
-            ['name' => "ETC", 'active' => true]
+            ['name' => "Sản xuất", 'active' => true]
         );
         TeamType::updateOrCreate(
             ['id' => 2],
-            ['name' => "OTC", 'active' => true]
+            ['name' => "Văn phòng", 'active' => true]
         );
         TeamType::updateOrCreate(
             ['id' => 3],
-            ['name' => "PS", 'active' => true]
+            ['name' => "Kinh doanh", 'active' => true]
         );
         TeamType::updateOrCreate(
             ['id' => 4],
-            ['name' => "GP", 'active' => true]
-        );
-        TeamType::updateOrCreate(
-            ['id' => 5],
             ['name' => "MKT", 'active' => true]
         );
         TeamType::updateOrCreate(
             ['id' => 9],
             ['name' => "TTS", 'active' => true]
+        );
+
+        KenhKD::updateOrCreate(
+            ['id' => 1],
+            ['name' => "ETC", 'active' => true]
+        );
+        KenhKD::updateOrCreate(
+            ['id' => 2],
+            ['name' => "OTC", 'active' => true]
+        );
+        KenhKD::updateOrCreate(
+            ['id' => 3],
+            ['name' => "PS", 'active' => true]
+        );
+        KenhKD::updateOrCreate(
+            ['id' => 4],
+            ['name' => "GP", 'active' => true]
         );
 
         NhomKD::updateOrCreate(
