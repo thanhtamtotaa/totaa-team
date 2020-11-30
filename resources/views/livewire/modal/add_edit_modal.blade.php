@@ -89,9 +89,9 @@
                                     <label class="col-form-label" for="quanlys">Quản lý:</label>
                                     <div class="select2-success" id="quanlys_div">
                                         <select class="form-control px-2 select2-totaa" multiple totaa-placeholder="Quản lý ..." totaa-search="10" wire:model="quanlys" id="quanlys" style="width: 100%">
-                                            @if (!!optional($bfo_info_arrays)->count())
+                                            @if (!!count($bfo_info_arrays))
                                                 @foreach ($bfo_info_arrays as $bfo_info_array)
-                                                    <option value="{{ $bfo_info_array->mnv }}">[{{ $bfo_info_array->mnv }}] {{ $bfo_info_array->full_name }}</option>
+                                                    <option value="{{ $bfo_info_array["mnv"] }}">[{{ $bfo_info_array["mnv"] }}] {{ $bfo_info_array["full_name"] }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
