@@ -70,13 +70,13 @@ class TeamLivewire extends Component
         $this->bfo_info_arrays = BfoInfo::where("active", true)->get();
 
         if (!!$this->team_type_id) {
-            $this->kenh_kd_arrays = TeamType::find($this->team_type_id)->kenh_kds;
+            $this->kenh_kd_arrays = optional(TeamType::find($this->team_type_id))->kenh_kds;
         } else {
             $this->kenh_kd_arrays = NULL;
         }
 
         if (!!$this->kenh_kd_id) {
-            $this->nhom_kd_arrays = KenhKD::find($this->kenh_kd_id)->nhom_kds;
+            $this->nhom_kd_arrays = optional(KenhKD::find($this->kenh_kd_id))->nhom_kds;
         } else {
             $this->nhom_kd_arrays = NULL;
         }
@@ -95,12 +95,15 @@ class TeamLivewire extends Component
 
     public function updatedTeamTypeId()
     {
-        $this->kenh_kd_arrays = TeamType::find($this->team_type_id)->kenh_kds;
+        $this->kenh_kd_arrays = optional(TeamType::find($this->team_type_id))->kenh_kds;
+        $this->kenh_kd_id = NULL;
+        $this->nhom_kd_id = NULL;
     }
 
     public function updatedKenhKdId()
     {
-        $this->nhom_kd_arrays = KenhKD::find($this->kenh_kd_id)->nhom_kds;
+        $this->nhom_kd_arrays = optional(KenhKD::find($this->kenh_kd_id))->nhom_kds;
+        $this->nhom_kd_id = NULL;
     }
 
     /**
