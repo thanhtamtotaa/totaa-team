@@ -44,4 +44,15 @@ class KenhKD extends Model
     {
         return $this->belongsTo(TeamType::class, 'team_type_id', 'id');
     }
+
+    /**
+     * Mỗi kênh có nhiều nhóm kinh doanh
+     * nhom_kds
+     *
+     * @return void
+     */
+    public function nhom_kds()
+    {
+        return $this->hasMany(NhomKD::class, 'team_type_id', 'id');
+    }
 }
