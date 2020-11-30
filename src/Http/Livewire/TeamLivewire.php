@@ -246,6 +246,7 @@ class TeamLivewire extends Component
         $this->team = Team::find($this->team_id);
         $this->name = $this->team->name;
         $this->members = $this->team->team_members->pluck("mnv");
+        $this->team_type_id = $this->team->team_type_id;
 
         $this->dispatchBrowserEvent('show_modal', "#set_team_member_modal");
     }
