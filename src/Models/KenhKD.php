@@ -23,7 +23,7 @@ class KenhKD extends Model
      *
      * @var string
      */
-    protected $table = 'nhom_kinhdoanhs';
+    protected $table = 'kenh_kinhdoanhs';
 
     /**
      * Mỗi nhóm kinh doanh sẽ có nhiều nhóm
