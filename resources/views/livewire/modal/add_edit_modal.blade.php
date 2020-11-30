@@ -27,15 +27,13 @@
                                 </div>
                             </div>
 
-                            <pre>{{ var_dump($quanlys, $kenh_kd_arrays, $nhom_kd_arrays) }}</pre>
-
                             <div class="col-12">
                                 <div class="form-group">
                                     <label class="col-form-label" for="team_type_id">Phân loại nhóm:</label>
                                     <div id="team_type_id_div">
                                         <select class="form-control px-2 select2-totaa" totaa-placeholder="Phân loại nhóm ..." totaa-search="10" wire:model="team_type_id" id="team_type_id" style="width: 100%">
                                             <option selected></option>
-                                            @if (!!$team_type_arrays->count())
+                                            @if (!!optional($team_type_arrays)->count())
                                                 @foreach ($team_type_arrays as $team_type_array)
                                                     <option value="{{ $team_type_array->id }}">{{ $team_type_array->name }}</option>
                                                 @endforeach
@@ -50,10 +48,48 @@
 
                             <div class="col-12">
                                 <div class="form-group">
+                                    <label class="col-form-label" for="kenh_kd_id">Kênh kinh doanh:</label>
+                                    <div id="kenh_kd_id_div">
+                                        <select class="form-control px-2 select2-totaa" totaa-placeholder="Kênh kinh doanh ..." totaa-search="10" wire:model="kenh_kd_id" id="kenh_kd_id" style="width: 100%">
+                                            <option selected></option>
+                                            @if (!!optional($kenh_kd_arrays)->count())
+                                                @foreach ($kenh_kd_arrays as $kenh_kd_array)
+                                                    <option value="{{ $kenh_kd_array->id }}">{{ $kenh_kd_array->name }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                    @error('kenh_kd_id')
+                                        <label class="pl-1 small invalid-feedback d-inline-block" ><i class="fas mr-1 fa-exclamation-circle"></i>{{ $message }}</label>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="col-form-label" for="nhom_kd_id">Nhóm sản phẩm:</label>
+                                    <div id="nhom_kd_id_div">
+                                        <select class="form-control px-2 select2-totaa" totaa-placeholder="Nhóm kinh doanh ..." totaa-search="10" wire:model="nhom_kd_id" id="nhom_kd_id" style="width: 100%">
+                                            <option selected></option>
+                                            @if (!!optional($nhom_kd_arrays)->count())
+                                                @foreach ($nhom_kd_arrays as $nhom_kd_array)
+                                                    <option value="{{ $nhom_kd_array->id }}">{{ $nhom_kd_array->name }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                    @error('nhom_kd_id')
+                                        <label class="pl-1 small invalid-feedback d-inline-block" ><i class="fas mr-1 fa-exclamation-circle"></i>{{ $message }}</label>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
                                     <label class="col-form-label" for="quanlys">Quản lý:</label>
                                     <div class="select2-success" id="quanlys_div">
                                         <select class="form-control px-2 select2-totaa" multiple totaa-placeholder="Quản lý ..." totaa-search="10" wire:model="quanlys" id="quanlys" style="width: 100%">
-                                            @if (!!$bfo_info_arrays->count())
+                                            @if (!!optional($bfo_info_arrays)->count())
                                                 @foreach ($bfo_info_arrays as $bfo_info_array)
                                                     <option value="{{ $bfo_info_array->mnv }}">[{{ $bfo_info_array->mnv }}] {{ $bfo_info_array->full_name }}</option>
                                                 @endforeach
