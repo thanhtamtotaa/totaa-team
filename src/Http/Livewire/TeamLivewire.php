@@ -76,7 +76,7 @@ class TeamLivewire extends Component
         }
 
         if (!!$this->kenh_kd_id) {
-            $this->nhom_kd_arrays = KenhKD::find($this->kenh_kd_id)->kenh_kd;
+            $this->nhom_kd_arrays = KenhKD::find($this->kenh_kd_id)->nhom_kds;
         } else {
             $this->nhom_kd_arrays = NULL;
         }
@@ -91,6 +91,16 @@ class TeamLivewire extends Component
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
+    }
+
+    public function updatedTeamTypeId()
+    {
+        $this->kenh_kd_arrays = TeamType::find($this->team_type_id)->kenh_kds;
+    }
+
+    public function updatedKenhKdId()
+    {
+        $this->nhom_kd_arrays = KenhKD::find($this->kenh_kd_id)->nhom_kds;
     }
 
     /**
