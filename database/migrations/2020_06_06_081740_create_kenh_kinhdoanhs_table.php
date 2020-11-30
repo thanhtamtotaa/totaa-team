@@ -16,12 +16,14 @@ class CreateTeamTypesTable extends Migration
         Schema::create('kenh_kinhdoanhs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 100);
+            $table->bigInteger('team_type_id')->unsigned()->nullable();
             $table->boolean('active')->nullable()->default(null);
             $table->unsignedBigInteger('created_by')->nullable()->default(null);
             $table->unsignedBigInteger('updated_by')->nullable()->default(null);
             $table->unsignedBigInteger('deleted_by')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('team_type_id')->references('id')->on('team_types')->onDelete('SET NULL')->onUpdate('cascade');
         });
     }
 
