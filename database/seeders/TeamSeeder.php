@@ -63,7 +63,7 @@ class TeamSeeder extends Seeder
             ['id' => 1],
             [
                 'name' => "Mắt",
-                'team_type_id' => '3',
+                'kenh_kd_id' => 1,
                 'order' => 1,
                 'active' => true,
             ]
@@ -73,7 +73,7 @@ class TeamSeeder extends Seeder
             ['id' => 2],
             [
                 'name' => "Hô hấp",
-                'team_type_id' => '3',
+                'kenh_kd_id' => 1,
                 'order' => 2,
                 'active' => true,
             ]
@@ -83,7 +83,7 @@ class TeamSeeder extends Seeder
             ['id' => 3],
             [
                 'name' => "DT Plus",
-                'team_type_id' => '3',
+                'kenh_kd_id' => 1,
                 'order' => 3,
                 'active' => true,
             ]
@@ -93,7 +93,7 @@ class TeamSeeder extends Seeder
             ['id' => 4],
             [
                 'name' => "Thần kinh",
-                'team_type_id' => '3',
+                'kenh_kd_id' => 1,
                 'order' => 4,
                 'active' => true,
             ]
@@ -103,7 +103,7 @@ class TeamSeeder extends Seeder
             ['id' => 5],
             [
                 'name' => "Cơ xương khớp",
-                'team_type_id' => '3',
+                'kenh_kd_id' => 1,
                 'order' => 5,
                 'active' => true,
             ]
@@ -113,7 +113,7 @@ class TeamSeeder extends Seeder
             ['id' => 6],
             [
                 'name' => "Hỗn hợp",
-                'team_type_id' => '3',
+                'kenh_kd_id' => 1,
                 'order' => 99,
                 'active' => true,
             ]
@@ -123,7 +123,6 @@ class TeamSeeder extends Seeder
             ['id' => 7],
             [
                 'name' => "Hỗn hợp",
-                'team_type_id' => '3',
                 'kenh_kd_id' => 2,
                 'order' => 99,
                 'active' => true,
@@ -134,7 +133,6 @@ class TeamSeeder extends Seeder
             ['id' => 8],
             [
                 'name' => "Gây mê hồi sức",
-                'team_type_id' => '3',
                 'kenh_kd_id' => 3,
                 'order' => 1,
                 'active' => true,
@@ -145,7 +143,6 @@ class TeamSeeder extends Seeder
             ['id' => 9],
             [
                 'name' => "Sản",
-                'team_type_id' => '3',
                 'kenh_kd_id' => 3,
                 'order' => 2,
                 'active' => true,
@@ -156,7 +153,6 @@ class TeamSeeder extends Seeder
             ['id' => 10],
             [
                 'name' => "Hỗn hợp",
-                'team_type_id' => '3',
                 'kenh_kd_id' => 3,
                 'order' => 99,
                 'active' => true,
@@ -167,7 +163,6 @@ class TeamSeeder extends Seeder
             ['id' => 11],
             [
                 'name' => "Hỗn hợp",
-                'team_type_id' => '3',
                 'kenh_kd_id' => 4,
                 'order' => 99,
                 'active' => true,
