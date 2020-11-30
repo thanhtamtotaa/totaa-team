@@ -54,11 +54,6 @@ class TeamSeeder extends Seeder
             ['name' => "GP", 'team_type_id' => '3', 'active' => true]
         );
 
-        KenhKD::updateOrCreate(
-            ['id' => 9],
-            ['name' => "MKT", 'team_type_id' => '2', 'active' => true]
-        );
-
         NhomKD::updateOrCreate(
             ['id' => 1],
             [
