@@ -27,7 +27,7 @@
                                 </div>
                             </div>
 
-                            <pre>{{ var_dump($quanlys) }}</pre>
+                            <pre>{{ var_dump($quanlys, $kenh_kd_arrays, $nhom_kd_arrays) }}</pre>
 
                             <div class="col-12">
                                 <div class="form-group">
