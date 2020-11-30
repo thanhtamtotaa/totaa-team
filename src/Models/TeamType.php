@@ -45,15 +45,4 @@ class TeamType extends Model
     {
         return $this->hasMany(NhomKD::class, 'kenh_kd_id', 'id');
     }
-
-    /**
-     * Mỗi loại nhóm có nhiều nhóm kinh doanh
-     * nhom_kds
-     *
-     * @return void
-     */
-    public function nhom_kds()
-    {
-        return $this->hasMany(NhomKD::class, 'team_type_id', 'id');
-    }
 }
