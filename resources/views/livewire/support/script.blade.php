@@ -10,6 +10,14 @@
         $(event.detail).modal("show");
     })
 
+    $(document).on("click", "[wire\\:click\\.prevent='save_team()']", function() {
+        ToTaa_BlockUI();
+    });
+
+    $(document).on("click", "[wire\\:click\\.prevent='save_team_member()']", function() {
+        ToTaa_BlockUI();
+    });
+
     //Toastr thông báo
     window.addEventListener('toastr', event => {
         toastr[event.detail.type](event.detail.message, event.detail.title, {
@@ -31,15 +39,15 @@
     });
 
     //Gọi view xác nhận xóa
-        $(document).on("click", "[totaa-edit-team]", function() {
-            ToTaa_BlockUI();
+    $(document).on("click", "[totaa-edit-team]", function() {
+        ToTaa_BlockUI();
         Livewire.emit('edit_team', $(this).attr("totaa-edit-team"));
     });
 
-    //Gọi view xác nhận xóa
-        $(document).on("click", "[totaa-delete-team]", function() {
-            ToTaa_BlockUI();
-        Livewire.emit('delete_team', $(this).attr("totaa-delete-team"));
+    //Gọi view set thành viên
+    $(document).on("click", "[totaa-set-team-member]", function() {
+        ToTaa_BlockUI();
+        Livewire.emit('set_team_member', $(this).attr("totaa-set-team-member"));
     });
 
     //Xử lý khi dữ liệu đã được load xong
