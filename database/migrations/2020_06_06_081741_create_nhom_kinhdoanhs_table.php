@@ -17,6 +17,7 @@ class CreateNhomKinhdoanhsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 100);
             $table->bigInteger('kenh_kd_id')->unsigned()->nullable();
+            $table->bigInteger('team_type_id')->unsigned()->nullable();
             $table->integer('order')->nullable()->default(null);
             $table->boolean('active')->nullable()->default(null);
             $table->unsignedBigInteger('created_by')->nullable()->default(null);
@@ -25,6 +26,7 @@ class CreateNhomKinhdoanhsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('kenh_kd_id')->references('id')->on('kenh_kinhdoanhs')->onDelete('SET NULL')->onUpdate('cascade');
+            $table->foreign('team_type_id')->references('id')->on('team_types')->onDelete('SET NULL')->onUpdate('cascade');
         });
     }
 
