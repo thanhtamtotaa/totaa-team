@@ -49,25 +49,25 @@
 
             if ($("select.select2-totaa").length != 0) {
                 $("select.select2-totaa").each(function(e) {
-                    if ($(this).hasClass("select2-hidden-accessible")) {
-                        $(this).trigger('change');
-                        console.log(12212);
-                    } else {
-                        $(this)
-                        .wrap('<div class="position-relative"></div>')
-                        .select2({
-                            placeholder: $(this).attr("totaa-placeholder"),
-                            minimumResultsForSearch: $(this).attr("totaa-search"),
-                            dropdownParent: $("#" + $(this).attr("id") + "_div"),
-                        })
-                        .on('select2:close', function (e) {
-                            console.log($(this).val());
-                            @this.set($(this).attr("wire:model"), $(this).val());
-                        });
-                    }
+                    $(this)
+                    .wrap('<div class="position-relative"></div>')
+                    .select2({
+                        placeholder: $(this).attr("totaa-placeholder"),
+                        minimumResultsForSearch: $(this).attr("totaa-search"),
+                        dropdownParent: $("#" + $(this).attr("id") + "_div"),
+                    });
                 });
             }
         });
     });
+
+    if ($("select.select2-totaa").length != 0) {
+        $("select.select2-totaa").each(function(e) {
+            $(this).on('select2:close', function (e) {
+                console.log($(this).val());
+                @this.set($(this).attr("wire:model"), $(this).val());
+            });
+        });
+    }
 
 </script>
