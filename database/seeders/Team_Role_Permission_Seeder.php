@@ -52,7 +52,7 @@ class Team_Role_Permission_Seeder extends Seeder
         }
 
         if (Role::where("name", "admin-team")->count() == 0) {
-            $admin_team = Role::create(['name' => 'admin-team', "description" => "Admin quản lý Team", "group" => "Admin", "order" => 2, "lock" => true,]);
+            $admin_team = Role::create(['name' => 'admin-team', "description" => "Admin Quản lý Team", "group" => "Admin", "order" => 2, "lock" => true,]);
         } else {
             $admin_team = Role::where("name", "admin-team")->first();
         }
