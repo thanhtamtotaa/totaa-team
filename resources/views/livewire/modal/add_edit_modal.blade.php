@@ -102,6 +102,42 @@
                                 </div>
                             </div>
 
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="col-form-label" for="main_team_id">Trực thuộc nhóm:</label>
+                                    <div class="select2-success" id="main_team_id_div">
+                                        <select class="form-control px-2 select2-totaa" totaa-placeholder="Trực thuộc nhóm ..." totaa-search="10" wire:model="main_team_id" id="main_team_id" style="width: 100%">
+                                            <option selected></option>
+                                            @if (!!optional($team_arrays)->count())
+                                                @foreach ($team_arrays as $team_array)
+                                                    <option value="{{ $team_array->id }}">{{ $team_array->name }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                    @error('main_team_id')
+                                        <label class="pl-1 small invalid-feedback d-inline-block" ><i class="fas mr-1 fa-exclamation-circle"></i>{{ $message }}</label>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            @if ($editStatus)
+                                <div class="col-12">
+                                    <div class="input-group form-group border-bottom cpc1hn-border py-2">
+                                        <div class="input-group-prepend mr-4">
+                                            <label class="col-form-label col-6 text-left pt-0 input-group-text border-0" for="active">Kích hoạt nhóm:</label>
+                                        </div>
+                                        <label class="switcher switcher-square">
+                                            <input type="checkbox" class="switcher-input form-control" wire:model="active" id="active" style="width: 100%">
+                                            <span class="switcher-indicator">
+                                                <span class="switcher-yes"></span>
+                                                <span class="switcher-no"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            @endif
+
                         </div>
                     </form>
                 </div>
@@ -109,7 +145,7 @@
 
             <div class="modal-footer mx-auto">
                 <button wire:click.prevent="cancel()" class="btn btn-danger" wire:loading.attr="disabled" data-dismiss="modal">Đóng</button>
-                <button wire:click.prevent="save()" class="btn btn-success" wire:loading.attr="disabled">Xác nhận</button>
+                <button wire:click.prevent="save_team()" class="btn btn-success" wire:loading.attr="disabled">Xác nhận</button>
             </div>
 
         </div>
