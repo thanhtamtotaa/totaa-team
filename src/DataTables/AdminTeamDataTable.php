@@ -30,7 +30,7 @@ class AdminTeamDataTable extends DataTable
                 }
 
                 if (Auth::user()->bfo_info->can("edit-team")) {
-                    $Action_Icon.="<div class='col action-icon-w-50 action-icon' totaa-set-team-member='$query->id'><i class='text-danger fas fa-users'></i></div>";
+                    $Action_Icon.="<div class='col action-icon-w-50 action-icon' totaa-set-team-member='$query->id'><i class='text-success fas fa-users'></i></div>";
                 }
 
                 $Action_Icon.="</div>";
