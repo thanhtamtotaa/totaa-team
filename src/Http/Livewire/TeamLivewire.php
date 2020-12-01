@@ -187,8 +187,9 @@ class TeamLivewire extends Component
 
         //Đầy thông tin về trình duyệt
         $this->dispatchBrowserEvent('dt_draw');
-        $this->dispatchBrowserEvent('toastr', ['type' => 'success', 'title' => "Thành công", 'message' => $this->toastr_message]);
+        $toastr_message = $this->toastr_message;
         $this->cancel();
+        $this->dispatchBrowserEvent('toastr', ['type' => 'success', 'title' => "Thành công", 'message' => $toastr_message]);
     }
 
     /**
@@ -275,7 +276,8 @@ class TeamLivewire extends Component
 
         //Đầy thông tin về trình duyệt
         $this->dispatchBrowserEvent('dt_draw');
-        $this->dispatchBrowserEvent('toastr', ['type' => 'success', 'title' => "Thành công", 'message' => $this->toastr_message]);
+        $toastr_message = $this->toastr_message;
         $this->cancel();
+        $this->dispatchBrowserEvent('toastr', ['type' => 'success', 'title' => "Thành công", 'message' => $toastr_message]);
     }
 }
