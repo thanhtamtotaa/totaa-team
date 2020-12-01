@@ -9,6 +9,7 @@ use Totaa\TotaaTeam\Models\TeamType;
 use Totaa\TotaaTeam\Models\KenhKD;
 use Totaa\TotaaTeam\Models\NhomKD;
 use Totaa\TotaaBfo\Models\BfoInfo;
+use Illuminate\Support\Facades\Cache;
 
 class TeamLivewire extends Component
 {
@@ -79,7 +80,11 @@ class TeamLivewire extends Component
         $this->created_by = $this->bfo_info->mnv;
         $this->team_type_arrays = TeamType::where("active", true)->get();
         $this->team_arrays = Team::where("active", true)->where("id", "<>", $this->team_id)->get();
-        $this->bfo_info_arrays = BfoInfo::where("active", true)->select("mnv", "full_name")->get()->toArray();
+        //$this->bfo_info_arrays = BfoInfo::where("active", true)->select("mnv", "full_name")->get()->toArray();
+
+        $this->bfo_info_arrays = Cache::remember('bfo_info_arrays_teams', 180, function () {
+            return BfoInfo::where("active", true)->select("mnv", "full_name")->get()->toArray();
+        });
 
         if (!!$this->team_type_id) {
             $this->kenh_kd_arrays = optional(TeamType::find($this->team_type_id))->kenh_kds;
