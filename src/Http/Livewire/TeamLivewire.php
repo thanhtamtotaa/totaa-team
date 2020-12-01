@@ -223,7 +223,7 @@ class TeamLivewire extends Component
         $this->kenh_kd_id = $this->team->kenh_kd_id;
         $this->nhom_kd_id = $this->team->nhom_kd_id;
         $this->order = $this->team->order;
-        $this->active = $this->team->active;
+        $this->active = !!$this->team->active;
         $this->quanlys = $this->team->team_leaders->pluck("mnv");
 
         $this->kenh_kd_arrays = optional(TeamType::find($this->team_type_id))->kenh_kds;
