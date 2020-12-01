@@ -10,4 +10,9 @@
     @push('livewires')
         @include('totaa-team::livewire.support.script')
     @endpush
+
+    <!-- Style -->
+    @push('styles')
+        @include('totaa-team::livewire.support.style')
+    @endpush
 </div>
