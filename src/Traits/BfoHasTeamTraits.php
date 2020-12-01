@@ -23,7 +23,7 @@ trait BfoHasTeamTraits
      */
     public function member_of_teams()
     {
-        return $this->belongsToMany(Team::class, 'team_leaders_table', 'member_mnv', 'team_id');
+        return $this->belongsToMany(Team::class, 'team_members_table', 'member_mnv', 'team_id');
     }
 
     /**
