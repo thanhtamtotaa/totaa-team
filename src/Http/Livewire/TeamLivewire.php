@@ -209,8 +209,6 @@ class TeamLivewire extends Component
             return null;
         }
 
-        $this->team_arrays = Team::where("active", true)->where("id", "<>", $this->team_id)->get();
-
         $this->modal_title = "Chỉnh sửa nhóm";
         $this->toastr_message = "Chỉnh sửa nhóm thành công";
         $this->editStatus = true;
@@ -218,6 +216,7 @@ class TeamLivewire extends Component
 
         $this->team_id = $id;
         $this->team = Team::find($this->team_id);
+        $this->team_arrays = Team::where("active", true)->where("id", "<>", $this->team_id)->get();
         $this->name = $this->team->name;
         $this->team_type_id = $this->team->team_type_id;
         $this->main_team_id = $this->team->main_team_id;
