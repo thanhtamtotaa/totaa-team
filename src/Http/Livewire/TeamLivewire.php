@@ -19,7 +19,7 @@ class TeamLivewire extends Component
      * @var mixed
      */
     public $team_id, $team, $name, $team_type_id, $main_team_id, $kenh_kd_id, $nhom_kd_id, $order, $active, $created_by, $quanlys, $members;
-    public $bfo_info, $modal_title, $toastr_message, $team_type_arrays, $bfo_info_arrays, $kenh_kd_arrays, $nhom_kd_arrays, $team_arrays;
+    public $bfo_info, $modal_title, $toastr_message, $team_type_arrays, $kenh_kd_arrays, $nhom_kd_arrays, $team_arrays;
 
     /**
      * Cho phép cập nhật updateMode
@@ -80,11 +80,6 @@ class TeamLivewire extends Component
         $this->created_by = $this->bfo_info->mnv;
         $this->team_type_arrays = TeamType::where("active", true)->get();
         $this->team_arrays = Team::where("active", true)->where("id", "<>", $this->team_id)->get();
-        //$this->bfo_info_arrays = BfoInfo::where("active", true)->select("mnv", "full_name")->get()->toArray();
-
-        $this->bfo_info_arrays = Cache::remember('bfo_info_arrays_teams', 180, function () {
-            return BfoInfo::where("active", true)->select("mnv", "full_name")->get()->toArray();
-        });
 
         if (!!$this->team_type_id) {
             $this->kenh_kd_arrays = optional(TeamType::find($this->team_type_id))->kenh_kds;
