@@ -15,4 +15,7 @@
     @push('styles')
         @include('totaa-team::livewire.support.style')
     @endpush
+    @php
+        $bfo_info_arrays = Totaa\TotaaBfo\Models\BfoInfo::where("active", true)->select("mnv", "full_name")->get()->toArray();
+    @endphp
 </div>
