@@ -1,4 +1,8 @@
 <div>
+    @php
+        $bfo_info_arrays = Totaa\TotaaBfo\Models\BfoInfo::where("active", true)->select("mnv", "full_name")->get()->toArray();
+    @endphp
+
     <!-- Filters and Add Buttons -->
     @include('totaa-team::livewire.support.filters')
 
@@ -15,7 +19,4 @@
     @push('styles')
         @include('totaa-team::livewire.support.style')
     @endpush
-    @php
-        $bfo_info_arrays = Totaa\TotaaBfo\Models\BfoInfo::where("active", true)->select("mnv", "full_name")->get()->toArray();
-    @endphp
 </div>
